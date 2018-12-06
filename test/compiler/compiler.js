@@ -1,9 +1,8 @@
 import chai, {expect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-
 import Compiler from '../../lib/compiler';
-import {readFileContent} from '../../lib/utils';
+import {isFile, readFileContent} from '../../lib/utils';
 import fs from 'fs';
 import fsx from 'fs-extra';
 
@@ -27,16 +26,8 @@ describe('Compiler', () => {
   });
 
   it('findInputsFiles', async () => {
-    const actualInputs = await compiler.findInputFiles({sourcesPath, targetPath});
+    const actualInputs = await compiler.findInputFiles(sourcesPath);
     expect(actualInputs).to.deep.eq(expectedInputs);
-  });
-
-  it('findInputs', async () => {
-    const actualInputs = await compiler.findInputs({sourcesPath, targetPath});
-    expect(Object.keys(actualInputs)).to.deep.eq(expectedInputs);
-    const basicTokenContractActual = actualInputs['test/compiler/contracts/BasicToken.sol'];
-    const basicTokenContractExpected = await readFileContent('test/compiler/contracts/BasicToken.sol');
-    expect(basicTokenContractActual).to.deep.eq(basicTokenContractExpected);
   });
 
   it('findImports in source path', async () => {
@@ -72,7 +63,7 @@ describe('Compiler', () => {
 
     it('save output', async () => {
       compiler.saveOutput(output);
-      expect(fs.lstatSync('test/compiler/build/BasicToken.json').isFile()).to.be.true;
+      expect(isFile('test/compiler/build/BasicToken.json')).to.be.true;
       fsx.removeSync('test/compiler/build');
       expect(fs.existsSync('test/compiler/build')).to.be.false;
     });

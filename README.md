@@ -200,6 +200,19 @@ expect('0x706618637b8ca922f6290ce1ecd4c31247e9ab75cf0530a0ac95c0332173d7c5').to.
 expect('0x70').to.be.properHex(2);
 ```
 
+## Fast complication
+By default, Waffle uses solcjs. Solcjs is solidity complier cross-complied to javascript. It is slow, but easy to install.
+As an alternative, you can use the original Solidity compiler, which is faster, but requires more complex installation procedure, which is different for each operating system.
+
+You can find installation instructions [here](https://solidity.readthedocs.io/en/latest/installing-solidity.html#binary-packages).
+
+Once installed you can use the following command for faster complication:
+```sh
+npx waffle --fast-compile
+```
+
+That should speed up complication time by a factor of x10.
+
 ## Roadmap
 
 * New matcher: changeBalance (see [#9](https://github.com/EthWorks/Waffle/issues/9))
