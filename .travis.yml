@@ -2,7 +2,7 @@ dist: trusty
 language: node_js
 cache: yarn
 before_install:
-  - sudo add-apt-repository ppa:ethereum/ethereum
+  - sudo add-apt-repository ppa:ethereum/ethereum -y
   - sudo apt-get update
   - sudo apt-get install solc
 node_js:
