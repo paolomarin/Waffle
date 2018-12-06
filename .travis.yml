@@ -4,7 +4,7 @@ cache: yarn
 before_install:
   - sudo add-apt-repository ppa:ethereum/ethereum -y
   - sudo apt-get update
-  - sudo apt-get install solc
+  - sudo apt-get install solc=0.4.24
 node_js:
   - '9'
   - '10'
