@@ -16,7 +16,7 @@ describe('SolcWrapper', () => {
   });
 
   it('buildCommand', async () => {
-    const expectedPrefix = 'solc --combined-json abi,asm,ast,bin,bin-runtime,clone-bin,compact-format,devdoc,hashes,interface,metadata,opcodes,srcmap,srcmap-runtime,userdoc ./test/compiler/custom/custom_contracts/Custom.sol'
+    const expectedPrefix = 'solc --combined-json abi,asm,ast,bin,bin-runtime,compact-format,devdoc,hashes,interface,metadata,opcodes,srcmap,srcmap-runtime,userdoc ./test/compiler/custom/custom_contracts/Custom.sol';
     const expectedSuffix = '-o ./waffle-tmp';
     const sources = ['./test/compiler/custom/custom_contracts/Custom.sol'];
     const actualCommand = wrapper.buildCommand(sources, './waffle-tmp');
